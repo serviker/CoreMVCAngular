@@ -1,0 +1,70 @@
+<!--
+<h2 mat-dialog-title>Добавление контакта</h2>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Имя" formControlName="firstName" required>
+      <mat-error *ngIf="contactForm.get('firstName').hasError('required')">Имя обязательно</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" formControlName="lastName" required>
+      <mat-error *ngIf="contactForm.get('lastName').hasError('required')">Фамилия обязательна</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Номер телефона" formControlName="phoneId" required>
+      <mat-error *ngIf="contactForm.get('phoneId').hasError('required')">Номер телефона обязателен</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Категория" formControlName="categoryId" required>
+      <mat-error *ngIf="contactForm.get('categoryId').hasError('required')">Категория обязательна</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Отмена</button>
+  <button class="btn btn-primary" (click)="onSubmit()" [disabled]="!contactForm.valid">Добавить контакт</button>
+</div>
+-->
+
+<h2 mat-dialog-title>Добавление контакта</h2>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Имя" formControlName="firstName" required>
+      <mat-error *ngIf="contactForm.get('firstName').hasError('required')">Имя обязательно</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" formControlName="lastName" required>
+      <mat-error *ngIf="contactForm.get('lastName').hasError('required')">Фамилия обязательна</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Номер телефона</mat-label>
+      <mat-select formControlName="phoneId" required>
+        <mat-option *ngFor="let phoneNumber of phoneNumbers" [value]="phoneNumber.phoneId">
+          {{ phoneNumber.numberPhone }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="contactForm.get('phoneId').hasError('required')">Номер телефона обязателен</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Категория</mat-label>
+      <mat-select formControlName="categoryId" required>
+        <mat-option *ngFor="let category of categories" [value]="category.categoryId">
+          {{ category.categoryName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="contactForm.get('categoryId').hasError('required')">Категория обязательна</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Отмена</button>
+  <button class="btn btn-primary" (click)="onSubmit()" [disabled]="!contactForm.valid">Добавить контакт</button>
+</div>
+

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Добавление номера телефона</h2>
+<div mat-dialog-content>
+  <form [formGroup]="phoneNumberForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Номер телефона" formControlName="numberPhone" required>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Отмена</button>
+  <button class="btn btn-primary" type="button" (click)="onSubmit()"
+          [disabled]="!phoneNumberForm.valid">
+    Добавить
+  </button>
+</div>

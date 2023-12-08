@@ -1,0 +1,123 @@
+
+<h2 mat-dialog-title>Edit Contact</h2>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <!--<mat-form-field>
+      <input matInput placeholder="Contact ID" formControlName="contactId" required>
+    </mat-form-field>-->
+    <mat-form-field>
+      <input matInput placeholder="First Name" formControlName="firstName" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" formControlName="lastName" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Категория</mat-label>
+      <mat-select formControlName="categoryId" required>
+        <mat-option *ngFor="let category of categories" [value]="category.categoryId">
+          {{ category.categoryName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="contactForm.get('categoryId')?.hasError('required')">Категория обязательна</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Номер телефона</mat-label>
+      <mat-select formControlName="phoneId" required>
+        <mat-option *ngFor="let phoneNumber of phoneNumbers" [value]="phoneNumber.phoneId">
+          {{ phoneNumber.numberPhone }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="contactForm.get('phoneId')?.hasError('required')">Номер телефона обязателен</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+  <button class="btn btn-primary" type="button" (click)="onSubmit()" [disabled]="!contactForm.valid">
+    Update
+  </button>
+</div>
+<!--
+-->
+<!--
+<h1 mat-dialog-title>Edit Category</h1>
+<div mat-dialog-content>
+  <p>Category Name: {{ data.categoryName }}</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.categoryName" placeholder="Category Name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="saveChanges()" class="btn btn-accent">Save Changes</button>
+  <button class="btn btn-primary" (click)="onSaveClick()">Save</button>
+</div>
+
+
+
+<h2 mat-dialog-title>{{'Редактирование контакта'}}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Имя" formControlName="firstName" required>
+      <mat-error *ngIf="contactForm.get('firstName')?.hasError('required')">Имя обязательно</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" formControlName="lastName" required>
+      <mat-error *ngIf="contactForm.get('lastName')?.hasError('required')">Фамилия обязательна</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Номер телефона" formControlName="phoneId" required>
+      <mat-error *ngIf="contactForm.get('phoneId')?.hasError('required')">Номер телефона обязателен</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Категория" formControlName="categoryId" required>
+      <mat-error *ngIf="contactForm.get('categoryId')?.hasError('required')">Категория обязательна</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Отмена</button>
+  <button class="btn btn-primary" *ngIf="contact?.contactId !== undefined"
+          (click)="onSubmit()" [disabled]="!contactForm.valid">
+    {{'Сохранить изменения' }}
+  </button>
+</div>
+
+
+<h2 mat-dialog-title>{{ editedContact ? 'Редактирование контакта' : 'Добавление контакта' }}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Имя" formControlName="firstName" required>
+      <mat-error *ngIf="contactForm.get('firstName').hasError('required')">Имя обязательно</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" formControlName="lastName" required>
+      <mat-error *ngIf="contactForm.get('lastName').hasError('required')">Фамилия обязательна</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Номер телефона" formControlName="phoneId" required>
+      <mat-error *ngIf="contactForm.get('phoneId').hasError('required')">Номер телефона обязателен</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Категория" formControlName="categoryId" required>
+      <mat-error *ngIf="contactForm.get('categoryId').hasError('required')">Категория обязательна</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancel()">Отмена</button>
+  <button class="btn btn-primary" *ngIf="contact && contact.contactId !== undefined"
+          (click)="onSubmit()" [disabled]="!contactForm.valid">
+    {{ editedContact ? 'Сохранить изменения' : 'Добавить контакт' }}
+  </button>
+</div>
+-->

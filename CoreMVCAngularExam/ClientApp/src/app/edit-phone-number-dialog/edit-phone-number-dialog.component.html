@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit Phone Number</h1>
+<div mat-dialog-content>
+  <p>Phone Number: {{ data.numberPhone }}</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.numberPhone" placeholder="Phone Number">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" (click)="onCancelClick()">Cancel</button>
+  <button class="btn btn-primary" (click)="onSaveClick()">Save</button>
+</div>

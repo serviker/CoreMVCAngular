@@ -1,0 +1,42 @@
+
+<h1>Contacts</h1>
+<div>
+  <label for="searchQuery">Search:</label>
+  <input type="text" id="searchQuery" [(ngModel)]="searchQuery" (input)="searchContacts()">
+</div>
+<br />
+<p *ngIf="!filteredContacts || filteredContacts.length === 0"><em>No contacts found.</em></p>
+<div class="example-button-row">
+  <button mat-button (click)="addContact()" class="btn btn-accent">Add Contact</button>
+</div>
+<br />
+<table *ngIf="filteredContacts && filteredContacts.length > 0" class="table table-striped">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Category</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of filteredContacts">
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.lastName }}</td>
+      <td>{{ getCategoryById(contact.categoryId)?.categoryName }}</td>
+      <td>{{ getPhoneNumberById(contact.phoneId)?.numberPhone }}</td>
+      <td>
+        <button mat-button (click)="updateContact(contact.contactId, contact.firstName, contact.lastName, contact.categoryId, contact.phoneId)"
+                class="btn btn-accent">
+          Edit
+        </button>
+        <button mat-button *ngIf="contact.contactId !== undefined"
+                (click)="deleteContact(contact.contactId)"
+                class="btn Warn">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

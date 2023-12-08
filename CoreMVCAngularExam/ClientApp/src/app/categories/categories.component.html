@@ -1,0 +1,34 @@
+<h1>Categories</h1>
+
+<!--<p>This component demonstrates fetching data from the server.</p>-->
+
+<p *ngIf="!categories"><em>Please, choose action.</em></p>
+<div class="example-button-row">
+  <button mat-button (click)="addCategory()" class="btn btn-accent">Add Category</button>
+</div>
+<table class='table' *ngIf="categories">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.categoryId }}</td>
+      <td>{{ category.categoryName }}</td>
+      <td>
+        <button mat-button
+                (click)="updateCategory(category.categoryId, category.categoryName)"
+                class="btn btn-accent">Edit</button>
+
+        <button mat-button *ngIf="category.categoryId !== undefined"
+                (click)="deleteCategory(category.categoryId)" class="btn Warn">
+          Delete
+        </button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

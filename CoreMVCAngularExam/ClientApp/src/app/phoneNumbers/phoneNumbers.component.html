@@ -1,0 +1,29 @@
+<h1>Phone Numbers</h1>
+<p *ngIf="!phoneNumbers"><em>Please, choose action.</em></p>
+<div class="example-button-row">
+  <button mat-button (click)="addPhoneNumber()" class="btn btn-accent">Add Phone</button>
+</div>
+<table class='table table-striped' *ngIf="phoneNumbers">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let phoneNumber of phoneNumbers">
+      <td>{{ phoneNumber.phoneId }}</td>
+      <td>{{ phoneNumber.numberPhone }}</td>
+      <td>
+        <button mat-button
+                (click)="updatePhoneNumber(phoneNumber.phoneId, phoneNumber.numberPhone)"
+                class="btn btn-accent">Edit</button>
+
+        <button mat-button *ngIf="phoneNumber.phoneId !== undefined"
+                (click)="deletePhoneNumber(phoneNumber.phoneId)" class="btn Warn">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

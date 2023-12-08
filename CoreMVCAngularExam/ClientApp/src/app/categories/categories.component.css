@@ -1,0 +1,16 @@
+.demo-table {
+  width: 60%;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-disabled {
+  display: inline-block;
+}
+/*.demo-button + .demo-button {
+  margin-left: 8px;
+}
+*/
